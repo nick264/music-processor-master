@@ -1,5 +1,6 @@
 class Player
 	def initialize(filename)
+		`rm /tmp/log`
 		@filename = filename
 
 		Signal.trap("EXIT"){ self.stop() }

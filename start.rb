@@ -13,7 +13,6 @@ filename = YoutubeAudio.fetch!(youtube_url)
 chords   = Chordify.fetch!(youtube_url)
 @player  = Player.new(filename)
 @player.play
-
 ChordStreamer.new(@player,chords).stream
 
 
