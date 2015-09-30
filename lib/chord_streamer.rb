@@ -5,7 +5,8 @@ class ChordStreamer
   def initialize(player, chords)
     @player     = player
     @chords     = chords # [ beat, chord, time_start, time_end ]
-    @colors_hex = ColourLovers.fetch!()
+    # @colors_hex = ColourLovers.fetch!()
+    @colors_hex = [ "FA6900", "69D2E7", "E0E4CC", "FA5A46"]
 
 
     chords_to_index = allocate_colors(@chords.map{ |x| x[1] })
@@ -58,7 +59,7 @@ class ChordStreamer
       puts "sleeping #{next_event_time - now} until next event"
       sleep(next_event_time - now)
       puts "Sending event #{next_event.inspect}"
-      serial_port.write(next_event[2])
+      serial_port.write(next_event[2].chr)
       puts "wrote the event"
     end
 

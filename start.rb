@@ -5,9 +5,14 @@ load "init.rb"
 #   @player.stop if @player
 # }
 
-youtube_url = ARGV[0]
 
-puts "youtube_url=#{youtube_url}"
+if ARGV[0].to_s.strip.size > 0
+	youtube_url = ARGV[0]
+	puts "youtube_url=#{youtube_url}"
+else
+	key = Chordify.choose_from_library
+	youtube_url = "https://www.youtube.com/watch?v=#{key}"
+end
 
 filename = YoutubeAudio.fetch!(youtube_url)
 chords   = Chordify.fetch!(youtube_url)
