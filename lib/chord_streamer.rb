@@ -17,7 +17,6 @@ class ChordStreamer
 
   end
 
-
   def stream
     set_palette(@colors_hex)
     sleep(2)

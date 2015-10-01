@@ -15,8 +15,15 @@ class Player
 	end
 
 	def play
+		ffplay_available = `type ffplay >/dev/null && echo "found" || echo "not found"`.chomp == "found"
+		command = if ffplay_available
+			"ffplay"
+		else
+			"sudo avplay"
+		end
+
 	  @player_id = fork do
-	    exec("ffplay -i -nodisp #{@filename}", out: ['/tmp/log','w'], err: ['/tmp/log','w'])
+	    exec("#{command} -i -nodisp #{@filename}", out: ['/tmp/log','w'], err: ['/tmp/log','w'])
 	  end
 	end
 
