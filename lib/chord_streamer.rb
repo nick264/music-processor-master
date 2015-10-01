@@ -165,7 +165,7 @@ class ChordStreamer
       `ls #{x}`.split("\n")
     end.flatten
 
-    raise "No matching port found!  Please specify explicitly or update the serial ports config." if matching_ports.size == 0
+    raise "No matching port found!  Please connect the Arduino, specify explicitly or update the serial ports config." if matching_ports.size == 0
     raise "Multiple valid ports found: #{matching_ports.inspect}.  Please specify which one, or update the serial ports config." if matching_ports.size > 1
 
     puts "DETECTED PORT #{matching_ports[0]}"
