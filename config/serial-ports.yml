@@ -1,0 +1,5 @@
+---
+osx:
+- /dev/tty.usbmodem*
+rpi:
+- /dev/ttyACM0

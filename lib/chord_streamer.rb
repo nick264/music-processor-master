@@ -1,10 +1,10 @@
 class ChordStreamer
-  ARDUINO_PORT = "/dev/tty.usbmodemfa131" # run this command with and without arduino plugged in: ls /dev/tty*
 
+  def initialize(player, chords, arduino_port = nil)
+    @player       = player
+    @chords       = chords # [ beat, chord, time_start, time_end ]
+    @arduino_port = arduino_port || detect_port
 
-  def initialize(player, chords)
-    @player     = player
-    @chords     = chords # [ beat, chord, time_start, time_end ]
     # @colors_hex = ColourLovers.fetch!()
     @colors_hex = [ "FA6900", "69D2E7", "E0E4CC", "FA5A46"]
 
@@ -15,9 +15,6 @@ class ChordStreamer
       [ x[2], x[1], chords_to_index[x[1]] ]
     end
 
-    # sleep(1) if @player.current_position.nil?
-
-    # @start_time = Time.now - @player.current_position
   end
 
 
@@ -98,7 +95,7 @@ class ChordStreamer
   def serial_port
     return @serial_port if @serial_port
 
-    port_str  = ARDUINO_PORT
+    port_str  = @arduino_port
     baud_rate = 9600
     data_bits = 8
     stop_bits = 1
@@ -130,14 +127,14 @@ class ChordStreamer
     puts "Collisions: "
     collisions_sorted.each{ |x,y| puts "#{x.inspect}\t#{y}" }
 
-    collisions_sorted.each do |chords,count|
-      if !retval.key?(chords[0])
-        retval[chords[0]] = index 
+    collisions_sorted.each do |these_chords,count|
+      if !retval.key?(these_chords[0])
+        retval[these_chords[0]] = index 
         index += 1
       end
 
-      if !retval.key?(chords[1])
-        retval[chords[1]] = index
+      if !retval.key?(these_chords[1])
+        retval[these_chords[1]] = index
         index += 1
       end
     end
@@ -146,7 +143,7 @@ class ChordStreamer
     retval.each{ |x,y| puts "#{x.inspect}\t#{y}" }
 
     remaining_collisions = {}
-    retval.to_a.group_by{ |chord,index| index % 5 }.each do |index_mod,chord_map|
+    retval.to_a.group_by{ |chord,this_index| this_index % 5 }.each do |index_mod,chord_map|
       these_chords = chord_map.map(&:first)
       next if these_chords.size == 1
       for i in 0..(these_chords.size - 1) do
@@ -163,15 +160,17 @@ class ChordStreamer
     retval
   end
 
-  # def score_schedule(schedule)
-  #   score = 0
+  def detect_port
+    port_config    = YAML.load_file(File.join(ROOT_DIR,'config/serial-ports.yml'))
+    matching_ports = port_config.values.flatten.map do |x|
+      `ls #{x}`.split("\n")
+    end.flatten
 
-  #   schedule[0..-2].zip(schedule[1..-1]) do |currentEv,nextEv|
-  #     if currentEv[2] != nextEv[2] && currentEv[1] == nextEv[1]
-  #       score -= 1
-  #     end
-  #   end
+    raise "No matching port found!  Please specify explicitly or update the serial ports config." if matching_ports.size == 0
+    raise "Multiple valid ports found: #{matching_ports.inspect}.  Please specify which one, or update the serial ports config." if matching_ports.size > 1
 
-  #   score
-  # end
+    puts "DETECTED PORT #{matching_ports[0]}"
+
+    matching_ports[0]
+  end
 end
