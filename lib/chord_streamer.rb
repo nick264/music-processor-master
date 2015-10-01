@@ -15,23 +15,29 @@ class ChordStreamer
       [ x[2], x[1], chords_to_index[x[1]] ]
     end
 
-    sleep(1) if @player.current_position.nil?
+    # sleep(1) if @player.current_position.nil?
 
-    @start_time = Time.now - @player.current_position
+    # @start_time = Time.now - @player.current_position
   end
 
 
   def stream
     set_palette(@colors_hex)
-    set_palette(@colors_hex)
-
-    # set_palette_thread = Thread.start do
-    #   set_palette(@colors_hex)
-    #   sleep(10)
-    # end
+    sleep(2)
+    # set_palette(@colors_hex)
 
     sync_clock_thread = Thread.start do
-      self.sync_clock()
+      # rapidly sync clock while waiting for player to initialize
+      while(@player.current_position.nil?) do
+        self.sync_clock()
+        sleep(0.1)
+      end
+
+      # sync clock periodically when player is playing
+      while(@event_schedule.size > 0) do
+        self.sync_clock()
+        sleep(10)
+      end
     end
 
     execute_events_thread = Thread.start do
@@ -41,6 +47,8 @@ class ChordStreamer
         self.execute_next_event
       end
     end
+
+    @player.play
 
     # set_palette_thread.join
     execute_events_thread.join
@@ -69,12 +77,11 @@ class ChordStreamer
   end
 
   def sync_clock
-    while(@event_schedule.size > 0) do
-      new_start_time = Time.now - @player.current_position
-      puts "SYNCING CLOCK: new-old = #{new_start_time - @start_time}"
-      @start_time = new_start_time
-      sleep(10)
-    end
+    return if @player.current_position.nil?
+
+    new_start_time = Time.now - @player.current_position
+    puts "SYNCING CLOCK: new-old = #{new_start_time - @start_time}" if @start_time
+    @start_time = new_start_time
   end
 
   def set_palette(colors_hex)
