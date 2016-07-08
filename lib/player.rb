@@ -1,6 +1,6 @@
 class Player
 	def initialize(filename)
-		`rm /tmp/log`
+		reset_log
 		@filename = filename
 
 		Signal.trap("EXIT"){ self.stop() }
@@ -32,5 +32,9 @@ class Player
 
 		Process.kill("TERM",@player_id)
 		`rm /tmp/log`
+	end
+
+	def reset_log
+		`rm tmp/log`
 	end
 end

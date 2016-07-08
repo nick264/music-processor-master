@@ -64,6 +64,7 @@ class ChordStreamer
       sleep(next_event_time - now)
       puts "Sending event #{next_event.inspect}"
       serial_port.write(next_event[2].chr)
+      # serial_port_direct_write(( next_event[2] + 1 ).chr)
       puts "wrote the event"
     end
 
@@ -104,6 +105,17 @@ class ChordStreamer
     sleep(2) # if we try to write too quickly after initialization the bits get lost...
     @serial_port
   end
+
+  # def serial_port_direct_write(input)
+  #   return if input.size == 0
+
+  #   if !@serial_port_configured
+  #     `stty -F /dev/ttyACM0 speed 9600 cs8 -cstopb -parenb`
+  #     @serial_port_configured = true
+  #   end
+
+  #   `echo -n '#{input}' > /dev/ttyACM0`
+  # end
 
   def allocate_colors(chords)
     all_chords = chords.uniq - [ "N" ]
