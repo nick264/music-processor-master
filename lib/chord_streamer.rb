@@ -106,7 +106,7 @@ class ChordStreamer
   end
 
   def allocate_colors(chords)
-    all_chords = chords.uniq
+    all_chords = chords.uniq - [ "N" ]
     puts "There are #{all_chords.size} chords: #{all_chords.inspect}."
 
     # find how often certain chords appear together

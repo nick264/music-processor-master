@@ -2,8 +2,9 @@ class Chordify
 	require 'yaml'
 
   def self.fetch!(youtube_url)
-		result        = RestClient.post("http://chordify.net/upload/url", { url: youtube_url })
+		result        = RestClient.post("https://chordify.net/upload/url", { url: youtube_url })
 		result_parsed = JSON.parse(result)
+
 		save_to_library(result_parsed)
 
     chords_raw = result_parsed["chords"]
