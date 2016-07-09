@@ -14,30 +14,22 @@ class ChordStreamer
     @event_schedule = @chords.map do |x|
       [ x[2], x[1], chords_to_index[x[1]] ]
     end
-
   end
 
   def stream
+    @player.reset_log # so that we sync the clock correctly
     set_palette(@colors_hex)
     sleep(2)
-    # set_palette(@colors_hex)
 
-    sync_clock_thread = Thread.start do
-      # rapidly sync clock while waiting for player to initialize
-      while(@player.current_position.nil?) do
-        self.sync_clock()
-        sleep(0.1)
-      end
-
-      # sync clock periodically when player is playing
-      while(@event_schedule.size > 0) do
-        self.sync_clock()
-        sleep(10)
-      end
-    end
+    # double check that everything is set up correctly
+    raise "Expect no start time" unless @player.start_time.nil? # start time gets set when player plays
+    raise "Expect event schedule!" unless @event_schedule.size > 0
 
     execute_events_thread = Thread.start do
-      sleep(3.0)
+      # rapidly sync clock while waiting for player to initialize
+      while(@player.start_time.nil?) do
+        sleep(0.1)
+      end
 
       while(@event_schedule.size > 0) do
         self.execute_next_event
@@ -52,14 +44,14 @@ class ChordStreamer
   end 
 
   def execute_next_event
+    puts "executing event: #{@event_schedule[0].inspect}"
     next_event = @event_schedule[0]
-    next_event_time = @start_time + next_event[0].to_f
+    next_event_time = @player.start_time(10) + next_event[0].to_f
     now        = Time.now
 
     if now > next_event_time
       puts "Skipping event #{next_event[1]}"
     else
-      # puts "Going to do next event in #{next_event_time - now}!"
       puts "sleeping #{next_event_time - now} until next event"
       sleep(next_event_time - now)
       puts "Sending event #{next_event.inspect}"
@@ -71,14 +63,6 @@ class ChordStreamer
     @event_schedule = @event_schedule[1..-1]
 
     true
-  end
-
-  def sync_clock
-    return if @player.current_position.nil?
-
-    new_start_time = Time.now - @player.current_position
-    puts "SYNCING CLOCK: new-old = #{new_start_time - @start_time}" if @start_time
-    @start_time = new_start_time
   end
 
   def set_palette(colors_hex)
@@ -106,16 +90,16 @@ class ChordStreamer
     @serial_port
   end
 
-  # def serial_port_direct_write(input)
-  #   return if input.size == 0
+  def serial_port_direct_write(input)
+    return if input.size == 0
 
-  #   if !@serial_port_configured
-  #     `stty -F /dev/ttyACM0 speed 9600 cs8 -cstopb -parenb`
-  #     @serial_port_configured = true
-  #   end
+    if !@serial_port_configured
+      puts `stty -F #{detect_port} speed 9600 cs8 -cstopb -parenb`
+      @serial_port_configured = true
+    end
 
-  #   `echo -n '#{input}' > /dev/ttyACM0`
-  # end
+    `echo -n '#{input}' > /dev/ttyACM0`
+  end
 
   def allocate_colors(chords)
     all_chords = chords.uniq - [ "N" ]
