@@ -31,4 +31,5 @@ end
 filename = YoutubeAudio.fetch!(options[:youtube_url])
 chords   = Chordify.fetch!(options[:youtube_url])
 @player  = Player.new(filename)
-ChordStreamer.new(@player,chords,options[:arduino_port]).stream
+@streamer = ChordStreamer.new(@player,chords,options[:arduino_port]).stream
+@streamer.wait

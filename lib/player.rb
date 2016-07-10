@@ -5,9 +5,9 @@ class Player
 		reset_log
 		@filename = filename
 
-		Signal.trap("EXIT"){ self.stop() }
-		Signal.trap("TERM"){ self.stop() }
-		Signal.trap("INT"){ self.stop() }
+		# Signal.trap("EXIT"){ self.stop() }
+		# Signal.trap("TERM"){ self.stop() }
+		# Signal.trap("INT"){ self.stop() }
 	end
 
 	def current_position

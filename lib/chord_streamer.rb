@@ -42,8 +42,12 @@ class ChordStreamer
   end
 
   def stop
-    @player.stop()
-    @execute_events_thread.kill()
+    @player.stop() if @player
+    @execute_events_thread.kill() if @execute_events_thread
+  end
+
+  def wait
+    @execute_events_thread.join if @execute_events_thread
   end
 
   def execute_next_event
