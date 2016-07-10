@@ -1,4 +1,0 @@
-graph LR
-    A(Raspberry Pi)-->B(Arduino)
-    C((Jukebox UI))-->A
-    B-->D[Lights]
