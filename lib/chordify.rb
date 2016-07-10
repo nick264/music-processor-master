@@ -7,11 +7,13 @@ class Chordify
     puts key
 
     if library(true)[key].nil? || library[key][:response].nil?
+      puts "fetching from chordify..."
   		result        = RestClient.post("https://chordify.net/upload/url", { url: youtube_url })
   		result_parsed = JSON.parse(result)
 
 		  save_to_library(result_parsed)
     else
+      puts "loading from cache..."
       result_parsed = library[key][:response]
     end
 
