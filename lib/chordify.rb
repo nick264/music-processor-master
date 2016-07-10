@@ -32,8 +32,6 @@ class Chordify
   		return
   	end
 
-  	library = YAML.load_file(library_file) || {}
-
   	library.to_a.each_with_index do |(key,title),i|
   		puts "#{i+1}.\t#{title}"
   	end
@@ -63,6 +61,11 @@ class Chordify
   	end
 
   	true
+  end
+
+  def self.library
+    return @library if @library
+    @library = YAML.load_file(library_file) || {}
   end
 
   private

@@ -1,9 +1,13 @@
 class Player
+	attr_accessor :player_id
+
 	def initialize(filename)
 		reset_log
 		@filename = filename
 
 		Signal.trap("EXIT"){ self.stop() }
+		Signal.trap("TERM"){ self.stop() }
+		Signal.trap("INT"){ self.stop() }
 	end
 
 	def current_position
@@ -41,11 +45,9 @@ class Player
 	def stop
 		return if !@player_id
 
-		# Process.kill("TERM",@player_id)
+		puts "killing process..."
 
-		# Process.kill doesn't have permission to kill sudo'ed commands
-		`sudo pkill -9 ffplay`
-		`sudo pkill -9 avplay`
+		Process.kill("TERM",@player_id)
 
 		reset_log
 		@start_time = nil

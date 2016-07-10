@@ -25,26 +25,29 @@ class ChordStreamer
     raise "Expect no start time" unless @player.start_time.nil? # start time gets set when player plays
     raise "Expect event schedule!" unless @event_schedule.size > 0
 
-    execute_events_thread = Thread.start do
+    @player.play
+    @execute_events_thread = Thread.new do
       # rapidly sync clock while waiting for player to initialize
       while(@player.start_time.nil?) do
         sleep(0.1)
       end
 
+      # stream the chords
       while(@event_schedule.size > 0) do
         self.execute_next_event
       end
     end
 
-    @player.play
+    self
+  end
 
-    # set_palette_thread.join
-    execute_events_thread.join
-    sync_clock_thread.join
-  end 
+  def stop
+    @player.stop()
+    @execute_events_thread.kill()
+  end
 
   def execute_next_event
-    puts "executing event: #{@event_schedule[0].inspect}"
+    # puts "executing event: #{@event_schedule[0].inspect}"
     next_event = @event_schedule[0]
     next_event_time = @player.start_time(10) + next_event[0].to_f
     now        = Time.now
@@ -52,12 +55,12 @@ class ChordStreamer
     if now > next_event_time
       puts "Skipping event #{next_event[1]}"
     else
-      puts "sleeping #{next_event_time - now} until next event"
+      # puts "sleeping #{next_event_time - now} until next event"
       sleep(next_event_time - now)
-      puts "Sending event #{next_event.inspect}"
+      # puts "Sending event #{next_event.inspect}"
       serial_port.write(next_event[2].chr)
       # serial_port_direct_write(( next_event[2] + 1 ).chr)
-      puts "wrote the event"
+      # puts "wrote the event"
     end
 
     @event_schedule = @event_schedule[1..-1]
@@ -71,8 +74,8 @@ class ChordStreamer
     end
 
     command = "p" + colors_rgb.map{ |x| x.join(',') }.join(';') + "|"
-    puts "Sending command: "
-    puts command
+    # puts "Sending command: "
+    # puts command
     serial_port.write(command)
   end
 
@@ -103,7 +106,7 @@ class ChordStreamer
 
   def allocate_colors(chords)
     all_chords = chords.uniq - [ "N" ]
-    puts "There are #{all_chords.size} chords: #{all_chords.inspect}."
+    # puts "There are #{all_chords.size} chords: #{all_chords.inspect}."
 
     # find how often certain chords appear together
     collisions = {}
@@ -119,8 +122,8 @@ class ChordStreamer
     index = 0
 
     collisions_sorted = Hash[ collisions.to_a.sort_by(&:last).reverse ]
-    puts "Collisions: "
-    collisions_sorted.each{ |x,y| puts "#{x.inspect}\t#{y}" }
+    # puts "Collisions: "
+    # collisions_sorted.each{ |x,y| puts "#{x.inspect}\t#{y}" }
 
     collisions_sorted.each do |these_chords,count|
       if !retval.key?(these_chords[0])
@@ -134,8 +137,8 @@ class ChordStreamer
       end
     end
 
-    puts "Allocation: "
-    retval.each{ |x,y| puts "#{x.inspect}\t#{y}" }
+    # puts "Allocation: "
+    # retval.each{ |x,y| puts "#{x.inspect}\t#{y}" }
 
     remaining_collisions = {}
     retval.to_a.group_by{ |chord,this_index| this_index % 5 }.each do |index_mod,chord_map|
@@ -149,8 +152,8 @@ class ChordStreamer
       end
     end
 
-    puts "Assuming five colors, remaining collisions: "
-    remaining_collisions.to_a.sort_by(&:last).reverse.each{ |x,y| puts "#{x.inspect}\t#{y}" }
+    # puts "Assuming five colors, remaining collisions: "
+    # remaining_collisions.to_a.sort_by(&:last).reverse.each{ |x,y| puts "#{x.inspect}\t#{y}" }
 
     retval
   end
@@ -164,7 +167,7 @@ class ChordStreamer
     raise "No matching port found!  Please connect the Arduino, specify explicitly or update the serial ports config." if matching_ports.size == 0
     raise "Multiple valid ports found: #{matching_ports.inspect}.  Please specify which one, or update the serial ports config." if matching_ports.size > 1
 
-    puts "DETECTED PORT #{matching_ports[0]}"
+    puts "DETECTED ARDUINO #{matching_ports[0]}"
 
     matching_ports[0]
   end

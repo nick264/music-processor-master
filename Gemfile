@@ -12,3 +12,4 @@ gem 'youtube-dl.rb'
 # gem 'coreaudio'
 # gem 'gstreamer'
 gem 'serialport'
+gem 'pi_piper', require: false
