@@ -44,7 +44,10 @@ class Input
       end
 
       # launch the show (unless user hit stop button)
-      if button_pressed != 16
+      if button_pressed == 16
+        puts "Stopping"
+        @running_streamer = nil
+      else
         puts "Launching show..."
         @running_streamer = [ button_pressed, run_show(button_pressed) ]
       end
