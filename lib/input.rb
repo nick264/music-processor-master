@@ -17,7 +17,7 @@ class Input
 
   def run_show(number)
     selection = Chordify.library.to_a[number-1]
-    title = selection[1]
+    title = selection[1][:title]
     filename = File.join(ROOT_DIR,"cache","#{selection[0]}.aac")
     youtube_url = "https://www.youtube.com/watch?v=#{selection[0]}"
 

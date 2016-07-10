@@ -2,26 +2,35 @@ class Chordify
 	require 'yaml'
 
   def self.fetch!(youtube_url)
-		result        = RestClient.post("https://chordify.net/upload/url", { url: youtube_url })
-		result_parsed = JSON.parse(result)
+    key = CGI.parse(URI.parse(youtube_url).query)["v"][0]
 
-		save_to_library(result_parsed)
+    puts key
+
+    if library(true)[key].nil? || library[key][:response].nil?
+  		result        = RestClient.post("https://chordify.net/upload/url", { url: youtube_url })
+  		result_parsed = JSON.parse(result)
+
+		  save_to_library(result_parsed)
+    else
+      result_parsed = library[key][:response]
+    end
 
     chords_raw = result_parsed["chords"]
-
     chords_raw.split("\n").map{ |x| x.split(";") }
   end
 
   def self.save_to_library(response)
   	`touch #{library_file}`
-    data = YAML.load_file(library_file) || {}
+    data = library(true)
 
 		title = response["metadata"]["title"]
 		key   = response["audio"]
 
 		raise "invalid key length" if key.size < 5 # make sure we're reading real keys
 
-		data[key] = title
+		data[key] ||= {}
+    data[key][:title] ||= title
+    data[key][:response] ||= response
 
 		File.open(library_file,'w') { |f| f.write data.to_yaml }
   end
@@ -32,8 +41,8 @@ class Chordify
   		return
   	end
 
-  	library.to_a.each_with_index do |(key,title),i|
-  		puts "#{i+1}.\t#{title}"
+  	library.to_a.each_with_index do |(key,data),i|
+  		puts "#{i+1}.\t#{data[:title]}"
   	end
 
   	puts "Choose one"
@@ -63,8 +72,8 @@ class Chordify
   	true
   end
 
-  def self.library
-    return @library if @library
+  def self.library(reload = false)
+    return @library if @library && !reload
     @library = YAML.load_file(library_file) || {}
   end
 
