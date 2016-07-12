@@ -1,9 +1,9 @@
 class ChordStreamer
+  @@serial_port = nil
 
-  def initialize(player, chords, arduino_port = nil)
+  def initialize(player, chords)
     @player       = player
     @chords       = chords # [ beat, chord, time_start, time_end ]
-    @arduino_port = arduino_port || detect_port
 
     # @colors_hex = ColourLovers.fetch!()
     @colors_hex = [ "FA6900", "69D2E7", "E0E4CC", "FA5A46"]
@@ -17,9 +17,7 @@ class ChordStreamer
   end
 
   def stream
-    @player.reset_log # so that we sync the clock correctly
     set_palette(@colors_hex)
-    sleep(2)
 
     # double check that everything is set up correctly
     raise "Expect no start time" unless @player.start_time.nil? # start time gets set when player plays
@@ -53,7 +51,7 @@ class ChordStreamer
   def execute_next_event
     # puts "executing event: #{@event_schedule[0].inspect}"
     next_event = @event_schedule[0]
-    next_event_time = @player.start_time(10) + next_event[0].to_f
+    next_event_time = @player.start_time + next_event[0].to_f
     now        = Time.now
 
     if now > next_event_time
@@ -78,23 +76,25 @@ class ChordStreamer
     end
 
     command = "p" + colors_rgb.map{ |x| x.join(',') }.join(';') + "|"
-    # puts "Sending command: "
-    # puts command
+    sleep(2.0)
     serial_port.write(command)
   end
 
-  def serial_port
-    return @serial_port if @serial_port
+  def self.init_serial_port
+    return @@serial_port if @@serial_port
 
-    port_str  = @arduino_port
+    port_str  = detect_port
     baud_rate = 9600
     data_bits = 8
     stop_bits = 1
     parity    = SerialPort::NONE
  
-    @serial_port = SerialPort.new(port_str, baud_rate, data_bits, stop_bits, parity)
-    sleep(2) # if we try to write too quickly after initialization the bits get lost...
-    @serial_port
+    @@serial_port = SerialPort.new(port_str, baud_rate, data_bits, stop_bits, parity)
+    @@serial_port
+  end
+
+  def serial_port
+    self.class.init_serial_port
   end
 
   def serial_port_direct_write(input)
@@ -162,7 +162,7 @@ class ChordStreamer
     retval
   end
 
-  def detect_port
+  def self.detect_port
     port_config    = YAML.load_file(File.join(ROOT_DIR,'config/serial-ports.yml'))
     matching_ports = port_config.values.flatten.map do |x|
       `ls #{x}`.split("\n")

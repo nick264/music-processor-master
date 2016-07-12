@@ -1,0 +1,268 @@
+Jul 11 22:47 : config: inotify: auto_update was disabled. enable during compilation phase
+Jul 11 22:47 : config: option 'enabled' on line 20 was not recognized
+Jul 11 22:47 : update: added /-DkslcOhytU.aac
+Jul 11 22:47 : update: added /4V1p1dM3snQ.aac
+Jul 11 22:47 : update: added /5Izea0vj9wo.aac
+Jul 11 22:47 : update: added /6gV9gUeFHIw.aac
+Jul 11 22:47 : update: added /8dOWE2Xb2Xw.aac
+Jul 11 22:47 : update: added /9E6b3swbnWg.aac
+Jul 11 22:47 : update: added /9qZOOb02u-4.aac
+Jul 11 22:47 : update: added /b6YWZKfvpho.aac
+Jul 11 22:47 : update: added /cLsvAxrdQeQ.aac
+Jul 11 22:47 : update: added /fbGUEelmzxo.aac
+Jul 11 22:47 : update: added /FIzLbXz5Au4.aac
+Jul 11 22:47 : update: added /gazW7MOqHzQ.aac
+Jul 11 22:47 : update: added /i-BFLjyIb04.aac
+Jul 11 22:47 : update: added /IaSIPQ-Bdc8.aac
+Jul 11 22:47 : update: added /InRDF_0lfHk.aac
+Jul 11 22:47 : update: added /IRfzAWUf3W4.aac
+Jul 11 22:47 : update: added /jRHQPG1xd9o.aac
+Jul 11 22:47 : update: added /JwxK2QsMKeU.aac
+Jul 11 22:47 : update: added /k35haKwqY14.aac
+Jul 11 22:47 : update: added /LUpBSvN1a50.aac
+Jul 11 22:47 : update: added /mgHxmAsINDk.aac
+Jul 11 22:47 : update: added /nfWlot6h_JM.aac
+Jul 11 22:47 : update: added /nT7_IZPHHb0.aac
+Jul 11 22:47 : update: added /pAgnJDJN4VA.aac
+Jul 11 22:47 : update: added /Q2JjJPDz3EE.aac
+Jul 11 22:47 : update: added /qkIyvA_iJnw.aac
+Jul 11 22:47 : update: added /QOUVVccs5dc.aac
+Jul 11 22:47 : update: added /QSlh8u8Nrig.aac
+Jul 11 22:47 : update: added /RPwDKN561BA.aac
+Jul 11 22:47 : update: added /SUFSB2plwzM.aac
+Jul 11 22:47 : update: added /UlyprQrZz4U.aac
+Jul 11 22:47 : update: added /wJVpihgwE18.aac
+Jul 11 22:47 : update: added /WKWGAGPy_kw.aac
+Jul 11 22:47 : update: added /XftabV9S2z0.aac
+Jul 11 22:47 : update: added /XivELBdxVRM.aac
+Jul 11 22:47 : update: added /y5HNCw3VLB0.aac
+Jul 11 22:47 : update: added /ZsXKa97J6pM.aac
+Jul 11 22:48 : config: inotify: auto_update was disabled. enable during compilation phase
+Jul 11 22:48 : config: option 'enabled' on line 20 was not recognized
+Jul 11 22:48 : client: [0] opened from 127.0.0.1:49440
+2016-07-11 22:49:14.729 mpd[1714:20910] 22:49:14.728 WARNING:  140: This application, or a library it uses, is using the deprecated Carbon Component Manager for hosting Audio Units. Support for this will be removed in a future release. Also, this makes the host incompatible with version 3 audio units. Please transition to the API's in AudioComponent.h.
+Jul 11 22:50 : config: inotify: auto_update was disabled. enable during compilation phase
+Jul 11 22:50 : config: option 'enabled' on line 20 was not recognized
+Jul 11 22:50 : client: [0] opened from 127.0.0.1:49442
+2016-07-11 22:50:05.708 mpd[1736:21677] 22:50:05.707 WARNING:  140: This application, or a library it uses, is using the deprecated Carbon Component Manager for hosting Audio Units. Support for this will be removed in a future release. Also, this makes the host incompatible with version 3 audio units. Please transition to the API's in AudioComponent.h.
+Jul 11 22:51 : client: [0] closed
+Jul 11 22:52 : client: [1] opened from 127.0.0.1:49447
+Jul 11 22:52 : player: played "LUpBSvN1a50.aac"
+2016-07-11 22:53:05.095 mpd[1736:21677] 22:53:05.095 WARNING:  140: This application, or a library it uses, is using the deprecated Carbon Component Manager for hosting Audio Units. Support for this will be removed in a future release. Also, this makes the host incompatible with version 3 audio units. Please transition to the API's in AudioComponent.h.
+Jul 11 22:54 : client: [1] closed
+Jul 11 22:56 : player: played "LUpBSvN1a50.aac"
+Jul 11 22:57 : client: [2] opened from 127.0.0.1:49463
+Jul 11 22:57 : client: [2] closed
+Jul 11 23:02 : client: [3] opened from 127.0.0.1:49528
+Jul 11 23:02 : client: [3] closed
+Jul 11 23:03 : client: [4] opened from 127.0.0.1:49530
+Jul 11 23:03 : db: No such directory
+2016-07-11 23:03:53.622 mpd[1736:21677] 23:03:53.622 WARNING:  140: This application, or a library it uses, is using the deprecated Carbon Component Manager for hosting Audio Units. Support for this will be removed in a future release. Also, this makes the host incompatible with version 3 audio units. Please transition to the API's in AudioComponent.h.
+Jul 11 23:04 : client: [4] closed
+Jul 11 23:04 : client: [5] opened from 127.0.0.1:49532
+Jul 11 23:04 : player: played "LUpBSvN1a50.aac"
+2016-07-11 23:04:53.230 mpd[1736:21677] 23:04:53.230 WARNING:  140: This application, or a library it uses, is using the deprecated Carbon Component Manager for hosting Audio Units. Support for this will be removed in a future release. Also, this makes the host incompatible with version 3 audio units. Please transition to the API's in AudioComponent.h.
+Jul 11 23:04 : client: [5] closed
+Jul 11 23:05 : client: [6] opened from 127.0.0.1:49534
+Jul 11 23:05 : player: played "LUpBSvN1a50.aac"
+2016-07-11 23:05:19.615 mpd[1736:21677] 23:05:19.614 WARNING:  140: This application, or a library it uses, is using the deprecated Carbon Component Manager for hosting Audio Units. Support for this will be removed in a future release. Also, this makes the host incompatible with version 3 audio units. Please transition to the API's in AudioComponent.h.
+Jul 11 23:05 : client: [6] closed
+Jul 11 23:05 : client: [7] opened from 127.0.0.1:49536
+Jul 11 23:05 : client: [7] closed
+Jul 11 23:06 : client: [8] opened from 127.0.0.1:49538
+Jul 11 23:06 : player: played "LUpBSvN1a50.aac"
+2016-07-11 23:06:13.084 mpd[1736:21677] 23:06:13.084 WARNING:  140: This application, or a library it uses, is using the deprecated Carbon Component Manager for hosting Audio Units. Support for this will be removed in a future release. Also, this makes the host incompatible with version 3 audio units. Please transition to the API's in AudioComponent.h.
+Jul 11 23:06 : client: [8] closed
+Jul 11 23:06 : client: [9] opened from 127.0.0.1:49540
+Jul 11 23:06 : client: [9] closed
+Jul 11 23:06 : client: [10] opened from 127.0.0.1:49542
+Jul 11 23:06 : player: played "LUpBSvN1a50.aac"
+2016-07-11 23:06:35.869 mpd[1736:21677] 23:06:35.869 WARNING:  140: This application, or a library it uses, is using the deprecated Carbon Component Manager for hosting Audio Units. Support for this will be removed in a future release. Also, this makes the host incompatible with version 3 audio units. Please transition to the API's in AudioComponent.h.
+Jul 11 23:06 : player: played "LUpBSvN1a50.aac"
+2016-07-11 23:07:20.916 mpd[1736:21677] 23:07:20.916 WARNING:  140: This application, or a library it uses, is using the deprecated Carbon Component Manager for hosting Audio Units. Support for this will be removed in a future release. Also, this makes the host incompatible with version 3 audio units. Please transition to the API's in AudioComponent.h.
+Jul 11 23:07 : client: [10] closed
+Jul 11 23:07 : client: [11] opened from 127.0.0.1:49546
+Jul 11 23:07 : client: [11] closed
+Jul 11 23:07 : client: [12] opened from 127.0.0.1:49547
+Jul 11 23:07 : client: [12] closed
+Jul 11 23:08 : client: [13] opened from 127.0.0.1:49549
+Jul 11 23:08 : player: played "LUpBSvN1a50.aac"
+Jul 11 23:08 : client: [13] closed
+Jul 11 23:08 : client: [14] opened from 127.0.0.1:49551
+Jul 11 23:08 : client: [14] closed
+Jul 11 23:08 : client: [15] opened from 127.0.0.1:49554
+Jul 11 23:08 : client: [15] closed
+Jul 11 23:08 : client: [16] opened from 127.0.0.1:49556
+Jul 11 23:08 : client: [16] closed
+Jul 11 23:08 : client: [17] opened from 127.0.0.1:49558
+Jul 11 23:08 : client: [17] closed
+Jul 11 23:08 : client: [18] opened from 127.0.0.1:49560
+Jul 11 23:08 : client: [18] closed
+Jul 11 23:10 : client: [19] opened from 127.0.0.1:49561
+Jul 11 23:10 : client: [19] closed
+Jul 11 23:12 : client: [20] opened from 127.0.0.1:49567
+Jul 11 23:12 : client: [20] closed
+Jul 11 23:12 : client: [21] opened from 127.0.0.1:49570
+Jul 11 23:12 : client: [21] closed
+Jul 11 23:12 : client: [22] opened from 127.0.0.1:49572
+Jul 11 23:12 : client: [22] closed
+Jul 11 23:12 : client: [23] opened from 127.0.0.1:49573
+Jul 11 23:12 : client: [23] closed
+Jul 11 23:12 : client: [24] opened from 127.0.0.1:49575
+Jul 11 23:12 : client: [24] closed
+2016-07-11 23:12:55.521 mpd[1736:21677] 23:12:55.521 WARNING:  140: This application, or a library it uses, is using the deprecated Carbon Component Manager for hosting Audio Units. Support for this will be removed in a future release. Also, this makes the host incompatible with version 3 audio units. Please transition to the API's in AudioComponent.h.
+Jul 11 23:13 : client: [25] opened from 127.0.0.1:49577
+Jul 11 23:13 : player: played "4V1p1dM3snQ.aac"
+2016-07-11 23:13:30.762 mpd[1736:21677] 23:13:30.762 WARNING:  140: This application, or a library it uses, is using the deprecated Carbon Component Manager for hosting Audio Units. Support for this will be removed in a future release. Also, this makes the host incompatible with version 3 audio units. Please transition to the API's in AudioComponent.h.
+Jul 11 23:14 : client: [25] closed
+Jul 11 23:14 : client: [26] opened from 127.0.0.1:49578
+Jul 11 23:14 : client: [26] closed
+Jul 11 23:14 : client: [27] opened from 127.0.0.1:49579
+Jul 11 23:14 : client: [27] closed
+Jul 11 23:14 : client: [28] opened from 127.0.0.1:49580
+Jul 11 23:14 : player: played "LUpBSvN1a50.aac"
+2016-07-11 23:15:00.023 mpd[1736:21677] 23:15:00.023 WARNING:  140: This application, or a library it uses, is using the deprecated Carbon Component Manager for hosting Audio Units. Support for this will be removed in a future release. Also, this makes the host incompatible with version 3 audio units. Please transition to the API's in AudioComponent.h.
+Jul 11 23:15 : client: [28] closed
+Jul 11 23:15 : client: [29] opened from 127.0.0.1:49581
+Jul 11 23:15 : client: [29] closed
+Jul 11 23:15 : client: [30] opened from 127.0.0.1:49582
+Jul 11 23:15 : client: [30] closed
+Jul 11 23:17 : client: [31] opened from 127.0.0.1:49645
+Jul 11 23:17 : player: played "4V1p1dM3snQ.aac"
+2016-07-11 23:17:41.785 mpd[1736:21677] 23:17:41.785 WARNING:  140: This application, or a library it uses, is using the deprecated Carbon Component Manager for hosting Audio Units. Support for this will be removed in a future release. Also, this makes the host incompatible with version 3 audio units. Please transition to the API's in AudioComponent.h.
+Jul 11 23:17 : client: [31] closed
+Jul 11 23:17 : client: [32] opened from 127.0.0.1:49647
+Jul 11 23:17 : client: [32] closed
+Jul 11 23:19 : client: [33] opened from 127.0.0.1:49672
+Jul 11 23:19 : player: played "4V1p1dM3snQ.aac"
+2016-07-11 23:19:15.760 mpd[1736:21677] 23:19:15.760 WARNING:  140: This application, or a library it uses, is using the deprecated Carbon Component Manager for hosting Audio Units. Support for this will be removed in a future release. Also, this makes the host incompatible with version 3 audio units. Please transition to the API's in AudioComponent.h.
+Jul 11 23:19 : client: [33] closed
+Jul 11 23:19 : client: [34] opened from 127.0.0.1:49673
+Jul 11 23:19 : client: [34] closed
+Jul 11 23:20 : client: [35] opened from 127.0.0.1:49679
+Jul 11 23:20 : player: played "LUpBSvN1a50.aac"
+Jul 11 23:20 : client: [35] closed
+Jul 11 23:20 : client: [36] opened from 127.0.0.1:49680
+Jul 11 23:20 : client: [36] closed
+Jul 11 23:20 : client: [37] opened from 127.0.0.1:49681
+2016-07-11 23:20:31.552 mpd[1736:21677] 23:20:31.552 WARNING:  140: This application, or a library it uses, is using the deprecated Carbon Component Manager for hosting Audio Units. Support for this will be removed in a future release. Also, this makes the host incompatible with version 3 audio units. Please transition to the API's in AudioComponent.h.
+Jul 11 23:20 : client: [37] closed
+Jul 11 23:20 : client: [38] opened from 127.0.0.1:49684
+Jul 11 23:20 : client: [38] closed
+Jul 11 23:21 : client: [39] opened from 127.0.0.1:49693
+Jul 11 23:21 : player: played "4V1p1dM3snQ.aac"
+2016-07-11 23:21:33.109 mpd[1736:21677] 23:21:33.109 WARNING:  140: This application, or a library it uses, is using the deprecated Carbon Component Manager for hosting Audio Units. Support for this will be removed in a future release. Also, this makes the host incompatible with version 3 audio units. Please transition to the API's in AudioComponent.h.
+Jul 11 23:21 : client: [39] closed
+Jul 11 23:21 : client: [40] opened from 127.0.0.1:49696
+Jul 11 23:21 : client: [40] closed
+Jul 11 23:21 : client: [41] opened from 127.0.0.1:49697
+Jul 11 23:21 : player: played "LUpBSvN1a50.aac"
+2016-07-11 23:21:53.926 mpd[1736:21677] 23:21:53.925 WARNING:  140: This application, or a library it uses, is using the deprecated Carbon Component Manager for hosting Audio Units. Support for this will be removed in a future release. Also, this makes the host incompatible with version 3 audio units. Please transition to the API's in AudioComponent.h.
+Jul 11 23:21 : client: [41] closed
+Jul 11 23:21 : client: [42] opened from 127.0.0.1:49698
+Jul 11 23:21 : client: [42] closed
+Jul 11 23:22 : client: [43] opened from 127.0.0.1:49702
+Jul 11 23:22 : player: played "4V1p1dM3snQ.aac"
+2016-07-11 23:22:14.675 mpd[1736:21677] 23:22:14.675 WARNING:  140: This application, or a library it uses, is using the deprecated Carbon Component Manager for hosting Audio Units. Support for this will be removed in a future release. Also, this makes the host incompatible with version 3 audio units. Please transition to the API's in AudioComponent.h.
+Jul 11 23:22 : client: [43] closed
+Jul 11 23:22 : client: [44] opened from 127.0.0.1:49707
+Jul 11 23:22 : client: [44] closed
+Jul 11 23:23 : client: [45] opened from 127.0.0.1:49708
+Jul 11 23:23 : player: played "LUpBSvN1a50.aac"
+2016-07-11 23:23:18.236 mpd[1736:21677] 23:23:18.236 WARNING:  140: This application, or a library it uses, is using the deprecated Carbon Component Manager for hosting Audio Units. Support for this will be removed in a future release. Also, this makes the host incompatible with version 3 audio units. Please transition to the API's in AudioComponent.h.
+Jul 11 23:23 : player: played "4V1p1dM3snQ.aac"
+Jul 11 23:23 : client: [45] closed
+Jul 11 23:23 : client: [46] opened from 127.0.0.1:49711
+Jul 11 23:23 : client: [46] closed
+Jul 11 23:28 : client: [47] opened from 127.0.0.1:49759
+Jul 11 23:28 : client: [47] closed
+Jul 11 23:28 : client: [48] opened from 127.0.0.1:49762
+Jul 11 23:28 : client: [48] closed
+Jul 11 23:29 : client: [49] opened from 127.0.0.1:49765
+Jul 11 23:29 : client: [49] closed
+Jul 11 23:29 : client: [50] opened from 127.0.0.1:49766
+Jul 11 23:29 : client: [50] closed
+Jul 11 23:29 : client: [51] opened from 127.0.0.1:49770
+2016-07-11 23:29:30.637 mpd[1736:21677] 23:29:30.637 WARNING:  140: This application, or a library it uses, is using the deprecated Carbon Component Manager for hosting Audio Units. Support for this will be removed in a future release. Also, this makes the host incompatible with version 3 audio units. Please transition to the API's in AudioComponent.h.
+Jul 11 23:29 : player: played "4V1p1dM3snQ.aac"
+Jul 11 23:29 : client: [51] closed
+Jul 11 23:29 : client: [52] opened from 127.0.0.1:49773
+Jul 11 23:29 : client: [52] closed
+Jul 11 23:30 : client: [53] opened from 127.0.0.1:49774
+2016-07-11 23:30:09.183 mpd[1736:21677] 23:30:09.183 WARNING:  140: This application, or a library it uses, is using the deprecated Carbon Component Manager for hosting Audio Units. Support for this will be removed in a future release. Also, this makes the host incompatible with version 3 audio units. Please transition to the API's in AudioComponent.h.
+Jul 11 23:30 : player: played "4V1p1dM3snQ.aac"
+Jul 11 23:30 : client: [53] closed
+Jul 11 23:30 : client: [54] opened from 127.0.0.1:49775
+Jul 11 23:30 : client: [54] closed
+Jul 11 23:30 : client: [55] opened from 127.0.0.1:49776
+2016-07-11 23:30:24.329 mpd[1736:21677] 23:30:24.329 WARNING:  140: This application, or a library it uses, is using the deprecated Carbon Component Manager for hosting Audio Units. Support for this will be removed in a future release. Also, this makes the host incompatible with version 3 audio units. Please transition to the API's in AudioComponent.h.
+Jul 11 23:30 : player: played "4V1p1dM3snQ.aac"
+Jul 11 23:30 : client: [55] closed
+Jul 11 23:30 : client: [56] opened from 127.0.0.1:49780
+Jul 11 23:30 : client: [56] closed
+Jul 11 23:30 : client: [57] opened from 127.0.0.1:49783
+2016-07-11 23:30:53.255 mpd[1736:21677] 23:30:53.255 WARNING:  140: This application, or a library it uses, is using the deprecated Carbon Component Manager for hosting Audio Units. Support for this will be removed in a future release. Also, this makes the host incompatible with version 3 audio units. Please transition to the API's in AudioComponent.h.
+Jul 11 23:30 : player: played "4V1p1dM3snQ.aac"
+Jul 11 23:30 : client: [57] closed
+Jul 11 23:30 : client: [58] opened from 127.0.0.1:49784
+Jul 11 23:30 : client: [58] closed
+Jul 11 23:31 : client: [59] opened from 127.0.0.1:49785
+2016-07-11 23:31:25.855 mpd[1736:21677] 23:31:25.855 WARNING:  140: This application, or a library it uses, is using the deprecated Carbon Component Manager for hosting Audio Units. Support for this will be removed in a future release. Also, this makes the host incompatible with version 3 audio units. Please transition to the API's in AudioComponent.h.
+Jul 11 23:31 : player: played "4V1p1dM3snQ.aac"
+Jul 11 23:31 : client: [59] closed
+Jul 11 23:31 : client: [60] opened from 127.0.0.1:49787
+Jul 11 23:31 : client: [60] closed
+Jul 11 23:32 : client: [61] opened from 127.0.0.1:49796
+2016-07-11 23:32:04.507 mpd[1736:21677] 23:32:04.507 WARNING:  140: This application, or a library it uses, is using the deprecated Carbon Component Manager for hosting Audio Units. Support for this will be removed in a future release. Also, this makes the host incompatible with version 3 audio units. Please transition to the API's in AudioComponent.h.
+Jul 11 23:32 : player: played "4V1p1dM3snQ.aac"
+Jul 11 23:32 : client: [61] closed
+Jul 11 23:32 : client: [62] opened from 127.0.0.1:49797
+Jul 11 23:32 : client: [62] closed
+Jul 11 23:32 : client: [63] opened from 127.0.0.1:49804
+2016-07-11 23:32:51.854 mpd[1736:21677] 23:32:51.854 WARNING:  140: This application, or a library it uses, is using the deprecated Carbon Component Manager for hosting Audio Units. Support for this will be removed in a future release. Also, this makes the host incompatible with version 3 audio units. Please transition to the API's in AudioComponent.h.
+Jul 11 23:33 : player: played "4V1p1dM3snQ.aac"
+Jul 11 23:33 : client: [63] closed
+Jul 11 23:33 : client: [64] opened from 127.0.0.1:49805
+Jul 11 23:33 : client: [64] closed
+Jul 11 23:33 : client: [65] opened from 127.0.0.1:49807
+2016-07-11 23:33:06.991 mpd[1736:21677] 23:33:06.991 WARNING:  140: This application, or a library it uses, is using the deprecated Carbon Component Manager for hosting Audio Units. Support for this will be removed in a future release. Also, this makes the host incompatible with version 3 audio units. Please transition to the API's in AudioComponent.h.
+Jul 11 23:34 : player: played "4V1p1dM3snQ.aac"
+Jul 11 23:34 : client: [65] closed
+Jul 11 23:34 : client: [66] opened from 127.0.0.1:49812
+Jul 11 23:34 : client: [66] closed
+Jul 11 23:34 : client: [67] opened from 127.0.0.1:49814
+2016-07-11 23:34:18.574 mpd[1736:21677] 23:34:18.574 WARNING:  140: This application, or a library it uses, is using the deprecated Carbon Component Manager for hosting Audio Units. Support for this will be removed in a future release. Also, this makes the host incompatible with version 3 audio units. Please transition to the API's in AudioComponent.h.
+Jul 11 23:34 : player: played "4V1p1dM3snQ.aac"
+Jul 11 23:34 : client: [67] closed
+Jul 11 23:34 : client: [68] opened from 127.0.0.1:49815
+Jul 11 23:34 : client: [68] closed
+Jul 11 23:34 : client: [69] opened from 127.0.0.1:49816
+2016-07-11 23:34:33.358 mpd[1736:21677] 23:34:33.358 WARNING:  140: This application, or a library it uses, is using the deprecated Carbon Component Manager for hosting Audio Units. Support for this will be removed in a future release. Also, this makes the host incompatible with version 3 audio units. Please transition to the API's in AudioComponent.h.
+Jul 11 23:34 : player: played "i-BFLjyIb04.aac"
+Jul 11 23:34 : client: [69] closed
+Jul 11 23:34 : client: [70] opened from 127.0.0.1:49817
+Jul 11 23:34 : client: [70] closed
+Jul 11 23:34 : client: [71] opened from 127.0.0.1:49818
+2016-07-11 23:34:56.667 mpd[1736:21677] 23:34:56.667 WARNING:  140: This application, or a library it uses, is using the deprecated Carbon Component Manager for hosting Audio Units. Support for this will be removed in a future release. Also, this makes the host incompatible with version 3 audio units. Please transition to the API's in AudioComponent.h.
+Jul 11 23:35 : player: played "b6YWZKfvpho.aac"
+Jul 11 23:35 : client: [71] closed
+Jul 11 23:35 : client: [72] opened from 127.0.0.1:49824
+Jul 11 23:35 : client: [72] closed
+Jul 11 23:35 : client: [73] opened from 127.0.0.1:49825
+2016-07-11 23:35:34.333 mpd[1736:21677] 23:35:34.333 WARNING:  140: This application, or a library it uses, is using the deprecated Carbon Component Manager for hosting Audio Units. Support for this will be removed in a future release. Also, this makes the host incompatible with version 3 audio units. Please transition to the API's in AudioComponent.h.
+Jul 11 23:36 : player: played "pAgnJDJN4VA.aac"
+Jul 11 23:36 : client: [73] closed
+Jul 11 23:36 : client: [74] opened from 127.0.0.1:49829
+Jul 11 23:36 : client: [74] closed
+Jul 11 23:36 : client: [75] opened from 127.0.0.1:49832
+2016-07-11 23:36:49.723 mpd[1736:21677] 23:36:49.723 WARNING:  140: This application, or a library it uses, is using the deprecated Carbon Component Manager for hosting Audio Units. Support for this will be removed in a future release. Also, this makes the host incompatible with version 3 audio units. Please transition to the API's in AudioComponent.h.
+Jul 11 23:37 : player: played "i-BFLjyIb04.aac"
+Jul 11 23:37 : client: [75] closed
+Jul 11 23:37 : client: [76] opened from 127.0.0.1:49848
+Jul 11 23:37 : client: [76] closed
+Jul 11 23:48 : client: [77] opened from 127.0.0.1:49986
+2016-07-11 23:48:26.639 mpd[1736:21677] 23:48:26.638 WARNING:  140: This application, or a library it uses, is using the deprecated Carbon Component Manager for hosting Audio Units. Support for this will be removed in a future release. Also, this makes the host incompatible with version 3 audio units. Please transition to the API's in AudioComponent.h.
+Jul 11 23:49 : player: played "i-BFLjyIb04.aac"
+Jul 11 23:49 : client: [77] closed
+Jul 11 23:49 : client: [78] opened from 127.0.0.1:49987
+Jul 11 23:49 : client: [78] closed

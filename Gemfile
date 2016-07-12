@@ -13,3 +13,4 @@ gem 'youtube-dl.rb'
 # gem 'gstreamer'
 gem 'serialport'
 gem 'pi_piper', require: false
+gem 'ruby-mpd'
