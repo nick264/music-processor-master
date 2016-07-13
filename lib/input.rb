@@ -12,8 +12,11 @@ class Input
     [13,14,15,16]
   ]
 
-  def initialize
+  def initialize(with_sound_fx = false)
     release_pins
+
+    ( @sound_fx_player = Player.new('config/jukebox-sound.mp4'); @sound_fx_player.init_length ) if with_sound_fx
+
     # Signal.trap("EXIT"){ puts "releasing pins..."; release_pins() }
     # Signal.trap("TERM"){ puts "releasing pins..."; release_pins() }
     # Signal.trap("INT"){ puts "releasing pins..."; release_pins() }
@@ -63,6 +66,11 @@ class Input
         @running_streamer = nil
       else
         puts "Launching show..."
+        if @sound_fx_player
+          @sound_fx_player.play
+          sleep(@sound_fx_player.length)
+        end
+
         @running_streamer = [ button_pressed, run_show(button_pressed) ]
       end
     end

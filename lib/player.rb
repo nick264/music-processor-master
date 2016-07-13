@@ -1,5 +1,6 @@
 class Player
 	attr_accessor :player_id
+	attr_accessor :length
 
 	def initialize(filename)
 		reset_log
@@ -30,12 +31,7 @@ class Player
 	end
 
 	def play
-		ffplay_available = `type ffplay >/dev/null && echo "found" || echo "not found"`.chomp == "found"
-		command = if ffplay_available
-			"ffplay"
-		else
-			"sudo avplay"
-		end
+		command = command_available('ffplay') ? "ffplay" : "sudo avplay"
 
 	  @player_id = fork do
 	    exec("#{command} -i -nodisp #{@filename}", out: [log_file,'w'], err: [log_file,'w'])
@@ -54,11 +50,28 @@ class Player
 		@last_synced = nil
 	end
 
+	def init_length
+		return @length if @length
+
+		if command_available('avconv')
+			file_info = `avconv -i config/jukebox-sound.mp4 2>&1`
+		else
+			file_info = `ffmpeg -i config/jukebox-sound.mp4 2>&1`
+		end
+
+		file_info_split = file_info.split(" ")
+		@length = file_info_split[file_info_split.index("Duration:")+1].gsub(",","").split(":").reverse.each_with_index.map{ |x,i| x.to_f * 60 **i }.inject{ |x,y| x +=y }
+	end
+
 	def reset_log
 		`rm #{log_file}`
 	end
 
 	def log_file
 		'tmp/log'
+	end
+
+	def command_available(command)
+		`type #{command} >/dev/null && echo "found" || echo "not found"`.chomp == "found"
 	end
 end
