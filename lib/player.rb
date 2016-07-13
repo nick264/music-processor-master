@@ -37,8 +37,12 @@ class Player
 			return @@mpd
 		end
 
+		if system_mpd_running?
+			`pkill -9 mpd`
+		end
+
 		if !mpd_running?
-				`mpd #{mpd_config_filename}`
+			`mpd #{mpd_config_filename}`
 		end
 
 		@@mpd = MPD.new
@@ -47,7 +51,11 @@ class Player
 	end
 
 	def self.mpd_running?
-		`ps aux | grep [m]pd`.strip.size > 0
+		`ps aux | grep [m]pd | grep #{ROOT_DIR} | grep -v "bash"`.strip.size > 0
+	end
+
+	def self.system_mpd_running?
+		`ps aux | grep [m]pd | grep -v #{ROOT_DIR} | grep -v "bash"`.strip.size > 0
 	end
 
 	def mpd
@@ -83,13 +91,14 @@ class Player
 	end
 
 	def current_position
-		elapsed_ms = `config/.mpd/mpdtime`.strip
+		mpd.status[:elapsed]
+		# elapsed_ms = `config/.mpd/mpdtime`.strip
 
-		if elapsed_ms.present?
-			elapsed_ms.to_i / 1e3
-		else
-			nil
-		end
+		# if elapsed_ms.present?
+		# 	elapsed_ms.to_i / 1e3
+		# else
+		# 	nil
+		# end
 	end
 
 	def start_time
