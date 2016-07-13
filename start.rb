@@ -28,8 +28,11 @@ if options[:youtube_url].nil?
 	options[:youtube_url] = "https://www.youtube.com/watch?v=#{key}"
 end
 
+# to make data write faster once we select a song
+ChordStreamer.init_serial_port
+
 filename = YoutubeAudio.fetch!(options[:youtube_url])
 chords   = Chordify.fetch!(options[:youtube_url])
 @player  = Player.new(filename)
-@streamer = ChordStreamer.new(@player,chords,options[:arduino_port]).stream
+@streamer = ChordStreamer.new(@player,chords).stream
 @streamer.wait

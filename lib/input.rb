@@ -13,6 +13,16 @@ class Input
   ]
 
   def initialize
+    release_pins
+    # Signal.trap("EXIT"){ puts "releasing pins..."; release_pins() }
+    # Signal.trap("TERM"){ puts "releasing pins..."; release_pins() }
+    # Signal.trap("INT"){ puts "releasing pins..."; release_pins() }
+  end
+
+  def release_pins
+    ( PINS_ROW + PINS_COL ).each do |pin|
+      `echo #{pin} >/sys/class/gpio/unexport`
+    end
   end
 
   def run_show(number)
@@ -28,7 +38,11 @@ class Input
   end
 
   def monitor
+    ChordStreamer.init_serial_port # for faster streamer on input selection
+
     @running_streamer = nil # track thread and which show it is
+
+    puts "READY FOR INPUT!"
 
     monitor_keypad do |button_pressed|
       # do nothing if the show is already running.  sometimes we get a bit of a button 'bounce'
@@ -88,62 +102,4 @@ class Input
 
     PiPiper.wait
   end
-
-  # def watch4
-  #   button_col = 0
-  #   button_row = 3
-
-  #   require 'pi_piper'
-  #   PiPiper.after pin: PINS_ROW[button_row], direction: :in, pull: :down, goes: :high do |pin|
-  #     puts "Pin went high!"
-  #     puts "BUTTON #{BUTTONS[button_row][button_col]} was pushed"
-  #   end
-
-  #   pin = PiPiper::Pin.new(:pin => PINS_COL[button_col], :direction => :out)
-  #   pin.on
-
-  #   PiPiper.wait
-  # end
-
-  # def watch3
-  #   require 'pi_piper'
-
-  #   PiPiper.watch pin: 27, direction: :in, pull: :down do |pin|
-  #     puts "last_value = #{pin.last_value}"
-  #     puts "value = #{pin.value}"
-  #     # puts "read = #{pin.read}"
-  #   end
-
-  #   PiPiper.after pin: 27, direction: :in, pull: :down, goes: :high do |pin|
-  #     puts "Pin went high!"
-  #   end
-
-  #   output_pin = PiPiper::Pin.new(:pin => 17, :direction => :out)
-
-  # end
-
-  # def watch2
-  #   input_pin = PiPiper::Pin.new(:pin => 27, :direction => :in, pull: :down)
-  #   output_pin = PiPiper::Pin.new(:pin => 17, :direction => :out)
-
-  #   4.times.each do
-  #     output_pin.off
-  #     puts "Output pin off.  Input = #{input_pin.read}"
-
-  #     output_pin.on
-  #     puts "Output pin on.  Input = #{input_pin.read}"
-  #   end   
-  # end
-
-  # def watch
-  #   pin = PiPiper::Pin.new(:pin => PINS_COL[0], :direction => :out)
-  #   pin.on
-
-  #   PiPiper.watch :pin => PINS_ROW[0], pull: :up do |pin|
-  #     puts "Pin changed from #{pin.last_value} to #{pin.value}"
-  #     puts "BUTTON #{BUTTONS[PINS_ROW[0]][PINS_COL[0]]} has value #{pin.value}"
-  #   end
-
-  #   PiPiper.wait
-  # end
 end

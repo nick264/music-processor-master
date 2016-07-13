@@ -3,3 +3,4 @@ osx:
 - /dev/tty.usbmodem*
 rpi:
 - /dev/ttyACM0
+- /dev/ttyACM1
