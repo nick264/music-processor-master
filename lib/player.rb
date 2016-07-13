@@ -1,10 +1,12 @@
+require 'digest/sha1'
+
 class Player
 	attr_accessor :player_id
 	attr_accessor :length
 
 	def initialize(filename)
-		reset_log
 		@filename = filename
+		reset_log
 
 		# Signal.trap("EXIT"){ self.stop() }
 		# Signal.trap("TERM"){ self.stop() }
@@ -68,7 +70,8 @@ class Player
 	end
 
 	def log_file
-		'tmp/log'
+		return @log_file if @log_file
+		@log_file = "tmp/log-#{Digest::SHA1.hexdigest(@filename)[0..7]}"
 	end
 
 	def command_available(command)

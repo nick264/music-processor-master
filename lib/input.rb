@@ -13,7 +13,7 @@ class Input
   ]
 
   def initialize(with_sound_fx = false)
-    release_pins
+    release_pins # sometimes PiPiper doesn't release pins on previous termination, so we make sure they're clear here
 
     ( @sound_fx_player = Player.new('config/jukebox-sound.mp4'); @sound_fx_player.init_length ) if with_sound_fx
 
@@ -72,6 +72,8 @@ class Input
         end
 
         @running_streamer = [ button_pressed, run_show(button_pressed) ]
+
+        @sound_fx_player.stop if @sound_fx_player # make sure to terminate avplayer
       end
     end
   end
