@@ -1,4 +1,4 @@
-load 'init.rb'
+load File.join(File.expand_path(File.dirname(__FILE__)),'init.rb')
 require 'optparse'
 
 options = {}
