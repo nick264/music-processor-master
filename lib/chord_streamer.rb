@@ -33,8 +33,10 @@ class ChordStreamer
       end
 
       # stream the chords
+      i = 0
       while(@event_schedule.size > 0) do
-        self.execute_next_event
+        self.execute_next_event( i < 10 ? 1 : 10)
+        i += 1
       end
     end
 
@@ -50,10 +52,10 @@ class ChordStreamer
     @execute_events_thread.join if @execute_events_thread
   end
 
-  def execute_next_event
+  def execute_next_event(sync_clock_every = 10)
     # puts "executing event: #{@event_schedule[0].inspect}"
     next_event = @event_schedule[0]
-    next_event_time = @player.start_time(10) + next_event[0].to_f
+    next_event_time = @player.start_time(sync_clock_every) + next_event[0].to_f
     now        = Time.now
 
     if now > next_event_time
