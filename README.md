@@ -37,7 +37,7 @@ __Note__: on Linux systems the music player is run with `sudo`.  GPIO pin access
 
 ### Troubleshooting
 
-If you have problems with Youtube video download, make sure to update with `youtube-dl -U`.  Updating the gem didn't update the binaries for me.
+If you have problems with Youtube video download, make sure to update with `youtube-dl -U`.  Updating the gem didn't update the binaries for me.  __Note__: youtube-dl appears to be outdated on Raspberry Pi!  Until this is fixed, if you want to add new songs you'll have to do it on OSX (and then copy the .aac file into the cache/ directory on the Raspberry Pi).
 
 If ffplay isn't found, you probably didn't install ffmpeg with ffplay.  Run `brew uninstall ffmpeg` followed by `brew install ffmpeg --with-ffplay`.
 
