@@ -2,8 +2,8 @@ class Input
   require 'pi_piper'
   # include PiPiper
 
-  PINS_ROW = [21,20,16,12]
-  PINS_COL = [6, 13,19,26]
+  BUTTON_PINS_ROW = [21,20,16,12]
+  BUTTON_PINS_COL = [6, 13,19,26]
 
   BUTTONS = [
     [1, 2, 3, 4 ],
@@ -23,7 +23,7 @@ class Input
   end
 
   def release_pins
-    ( PINS_ROW + PINS_COL ).each do |pin|
+    ( BUTTON_PINS_ROW + BUTTON_PINS_COL ).each do |pin|
       `echo #{pin} >/sys/class/gpio/unexport`
     end
   end
@@ -83,7 +83,7 @@ class Input
 
     # monitor row pins
     BUTTONS.each_with_index do |row,row_index|
-      PiPiper.after pin: PINS_ROW[row_index], direction: :in, pull: :down, goes: :high do |pin|
+      PiPiper.after pin: BUTTON_PINS_ROW[row_index], direction: :in, pull: :down, goes: :high do |pin|
         puts "Pin went high!"
         puts "current_high_col = #{@current_high_col}"
         puts "BUTTON #{BUTTONS[row_index][@current_high_col]} was pushed"
@@ -95,7 +95,7 @@ class Input
     # send rotating signal rotate through col pins
 
     # set all to low
-    col_pins = PINS_COL.map{ |pin_number| PiPiper::Pin.new(pin: pin_number, direction: :out) }
+    col_pins = BUTTON_PINS_COL.map{ |pin_number| PiPiper::Pin.new(pin: pin_number, direction: :out) }
     col_pins.each{ |pin| pin.off }
 
     Thread.new do
@@ -112,4 +112,32 @@ class Input
 
     PiPiper.wait
   end
+
+  # def set_light(light_number)
+  #   lights = [
+  #     [1,2],
+  #     [3,4]
+  #   ]
+
+  #   row_pins = [7,8]
+  #   col_pins = [9,10]
+
+  
+  #   @rows = row_pins.map{ |p| PiPiper::Pin.new(pin: p, direction: :out) } if !@rows
+  #   @cols = col_pins.map{ |p| PiPiper::Pin.new(pin: p, direction: :out) } if !@cols
+
+  #   @rows.each{ |p| p.off }
+  #   @cols.each{ |p| p.off }
+
+
+  #   idx = lights.flatten.index(light_number)
+  #   row_idx = idx / lights[0].size
+  #   col_idx = idx % lights[0].size
+
+  #   puts row_idx
+  #   puts col_idx
+
+  #   @rows[row_idx].on
+  #   @cols[col_idx].on
+  # end
 end
