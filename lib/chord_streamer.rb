@@ -3,18 +3,20 @@ class ChordStreamer
 
   def initialize(player, chords)
     @player       = player
-    @chords       = chords # [ beat, chord, time_start, time_end ]
+    @chords       = chords # [ { 'b' => beat, 'c' => chord, 'f' => time_start, 'd' => duration } ]
 
     # @colors_hex = ColourLovers.fetch!()
     @colors_hex = [ "FA6900", "69D2E7", "E0E4CC", "FA5A46"]
     # @colors_hex = [ "FFFF00", "FF00FF", "00FFFF", "FFFFFF" ]
     # @colors_hex = [ "490A3D", "BD1550", "E97F02", "F8CA00", "8A9B0F" ]
 
-    chords_to_index = allocate_colors(@chords.map{ |x| x[1] })
+    chords_to_index = allocate_colors(@chords.map{ |x| x['c'] })
     
     @event_schedule = @chords.map do |x|
-      [ x[2], x[1], chords_to_index[x[1]] ]
+      [ x['f'], x['c'], chords_to_index[x['c']] ]
     end
+
+    puts @event_schedule.inspect
   end
 
   def stream
