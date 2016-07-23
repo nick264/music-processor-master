@@ -12,5 +12,6 @@ OptionParser.new do |opts|
 end.parse!
 
 ChordStreamer.init_serial_port # for faster streamer on input selection
+Chordify.library # load chordify library
 Input.new(options[:sfx]).monitor
 # Input.new(false).monitor

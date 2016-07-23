@@ -3,6 +3,7 @@ class Chordify
   ACCOUNT_EMAIL = 'nicholas.sedlet@gmail.com'
   ACCOUNT_PASSWORD = 'thisismycoolpassword'
   @@login_cookies = nil
+  @@library = nil
 
   def self.login!
     return @@login_cookies if @@login_cookies
@@ -42,7 +43,7 @@ class Chordify
   def self.fetch!(youtube_url, force_query = false)
     key = CGI.parse(URI.parse(youtube_url).query)["v"][0]
 
-    if library(true)[key].nil? || library[key][:response].nil? || force_query
+    if ( entry = library[key] ).nil? || entry[:response].nil? || force_query
       puts "fetching from chordify..."
       song_data = fetch_song_data!(key)
 		  save_to_library(song_data)
@@ -105,8 +106,8 @@ class Chordify
   end
 
   def self.library(reload = false)
-    return @library if @library && !reload
-    @library = YAML.load_file(library_file) || {}
+    return @@library if @@library && !reload
+    @@library = YAML.load_file(library_file) || {}
   end
 
   private

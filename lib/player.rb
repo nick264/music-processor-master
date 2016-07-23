@@ -55,10 +55,12 @@ class Player
 	def init_length
 		return @length if @length
 
+		puts @filename
+
 		if command_available('avconv')
-			file_info = `avconv -i config/jukebox-sound.mp4 2>&1`
+			file_info = `avconv -i #{@filename} 2>&1`
 		else
-			file_info = `ffmpeg -i config/jukebox-sound.mp4 2>&1`
+			file_info = `ffmpeg -i #{@filename} 2>&1`
 		end
 
 		file_info_split = file_info.split(" ")

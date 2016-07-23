@@ -15,7 +15,7 @@ class Input
   def initialize(with_sound_fx = false)
     release_pins # sometimes PiPiper doesn't release pins on previous termination, so we make sure they're clear here
 
-    ( @sound_fx_player = Player.new('config/jukebox-sound.mp4'); @sound_fx_player.init_length ) if with_sound_fx
+    ( @sound_fx_player = Player.new('config/jukebox-sound.aac'); @sound_fx_player.init_length ) if with_sound_fx
 
     # Signal.trap("EXIT"){ puts "releasing pins..."; release_pins() }
     # Signal.trap("TERM"){ puts "releasing pins..."; release_pins() }
@@ -69,13 +69,13 @@ class Input
         if @sound_fx_player
           @sound_fx_player.play
           # sleep(@sound_fx_player.length)
-          sleep(1.0) # start show before sound has finished
+          sleep(3.0) # start show before sound has finished
         end
 
         @running_streamer = [ button_pressed, run_show(button_pressed) ]
 
         if @sound_fx_player
-          sleep(2.0)
+          sleep(1.0)
           @sound_fx_player.stop
         end
       end
@@ -88,10 +88,7 @@ class Input
     # monitor row pins
     BUTTONS.each_with_index do |row,row_index|
       PiPiper.after pin: BUTTON_PINS_ROW[row_index], direction: :in, pull: :down, goes: :high do |pin|
-        puts "Pin went high!"
-        puts "current_high_col = #{@current_high_col}"
         puts "BUTTON #{BUTTONS[row_index][@current_high_col]} was pushed"
-
         block.call(BUTTONS[row_index][@current_high_col]) if block_given?
       end
     end

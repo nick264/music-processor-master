@@ -28,8 +28,8 @@ if options[:youtube_url].nil?
 	options[:youtube_url] = "https://www.youtube.com/watch?v=#{key}"
 end
 
-# to make data write faster once we select a song
-ChordStreamer.init_serial_port
+ChordStreamer.init_serial_port # to make data write faster once we select a song
+Chordify.library # load chordify library
 
 filename = YoutubeAudio.fetch!(options[:youtube_url])
 chords   = Chordify.fetch!(options[:youtube_url])

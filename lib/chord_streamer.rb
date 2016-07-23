@@ -15,8 +15,6 @@ class ChordStreamer
     @event_schedule = @chords.map do |x|
       [ x['f'], x['c'], chords_to_index[x['c']] ]
     end
-
-    puts @event_schedule.inspect
   end
 
   def stream
