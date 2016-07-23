@@ -68,12 +68,16 @@ class Input
         puts "Launching show..."
         if @sound_fx_player
           @sound_fx_player.play
-          sleep(@sound_fx_player.length)
+          # sleep(@sound_fx_player.length)
+          sleep(1.0) # start show before sound has finished
         end
 
         @running_streamer = [ button_pressed, run_show(button_pressed) ]
 
-        @sound_fx_player.stop if @sound_fx_player # make sure to terminate avplayer
+        if @sound_fx_player
+          sleep(2.0)
+          @sound_fx_player.stop
+        end
       end
     end
   end
